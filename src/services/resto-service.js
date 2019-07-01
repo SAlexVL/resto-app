@@ -11,17 +11,7 @@ export default class RestoService {
   }
   
   getMenuItems = async () => {
-    const res = await this.getAllItems();
-    return res.map(this._transformItem);
+    return await this.getAllItems();
   }
 
-  _transformItem(data) {
-    return {
-        title: data.title,
-        price: data.price,
-        url: data.url,
-        category: data.category,
-        id: data.id
-    }
-  }
 }
