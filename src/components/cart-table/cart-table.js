@@ -23,8 +23,20 @@ const CartTable = ({items, deleteFromCart}) => {
                     })
                 }
             </div>
+            <button onClick={() => buyItems(items)} className="cart__buyallitems">Оформить заказ</button>
         </>
     );
+};
+
+const buyItems = async (items) => {
+    await fetch('http://localhost:3000/orders', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(items)
+    });
 };
 
 const mapStateToProps = ({items}) => {
